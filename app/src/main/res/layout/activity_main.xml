@@ -9,8 +9,9 @@
     android:background="@color/white">
 
     <ImageView
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/clg"
         android:layout_marginTop="50dp"/>
     <TextView

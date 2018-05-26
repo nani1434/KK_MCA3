@@ -1,5 +1,7 @@
 package com.kkmca.kk_mca;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,7 +17,8 @@ import android.view.MenuItem;
 
 public class NavigationBar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+FragmentManager fManager;
+FragmentTransaction tx;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,10 @@ public class NavigationBar extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        fManager=getFragmentManager();
+        tx=fManager.beginTransaction();
+        tx.add(R.id.frame,new home());
+        tx.commit();
     }
 
     @Override
@@ -80,18 +87,48 @@ public class NavigationBar extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.home) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new home());
+            tx.commit();
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.admission) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new admission());
+            tx.commit();
+        } else if (id == R.id.faculty) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new faculty());
+            tx.commit();
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.library) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new library());
+            tx.commit();
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new share());
+            tx.commit();
+        } else if (id == R.id.lab) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new labs());
+            tx.commit();
+        }else if (id == R.id.gallery) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new gallery());
+            tx.commit();
+        }else if (id == R.id.hostel) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new hostel());
+            tx.commit();
+        }else if (id == R.id.downloads) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new downloads());
+            tx.commit();
+        }else if (id == R.id.contact) {
+            tx=fManager.beginTransaction();
+            tx.replace(R.id.frame,new contactus());
+            tx.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
